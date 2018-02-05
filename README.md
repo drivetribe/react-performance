@@ -4,6 +4,8 @@ Helpers to debug and record component render performance
 
 With the release of React Fiber in v16, `react-addons-perf` has officially become obsolete. This project aims to be a "close enough" alternate solution.
 
+Fork of [Amsul's](https://github.com/amsul/react-performance)
+
 #### Logs
 
 ![](docs/renders.png)
@@ -20,21 +22,21 @@ With the release of React Fiber in v16, `react-addons-perf` has officially becom
 
 ## Installation
 
-- [Yarn](https://yarnpkg.com): `yarn add react-performance`
-- [npm](https://www.npmjs.com): `npm install react-performance`
+* [Yarn](https://yarnpkg.com): `yarn add react-performance`
+* [npm](https://www.npmjs.com): `npm install react-performance`
 
 <br />
 
 ## Usage
 
 ```js
-import ReactPerformance from 'react-performance'
+import ReactPerformance from 'react-performance';
 ```
 
 You can also choose to import selectively:
 
 ```js
-import { measure, startRecording, printRecording } from 'react-performance'
+import { measure, startRecording, printRecording } from 'react-performance';
 ```
 
 NOTE: In a production environment, `ReactPerformance` disables itself.
@@ -44,13 +46,15 @@ NOTE: In a production environment, `ReactPerformance` disables itself.
 To measure the rendering of a component, wrap it with the `measure` HOC:
 
 ```js
-class MyComponent extends React.Component {/* ... */}
+class MyComponent extends React.Component {
+  /* ... */
+}
 
 export default ReactPerformance.measure({
   getId: 'some_recognizable_identifier',
   Component: MyComponent,
-  isCollapsed: false,
-})
+  isCollapsed: false
+});
 ```
 
 That's it. Now logs will print every time the component renders.
@@ -59,24 +63,24 @@ If you use Redux, read the section below on how to [Use with Redux](#use-with-re
 
 ##### Options:
 
-- `getId` is a string or function that helps you uniquely identify each component being rendered in the logs.
-  - As a string, if it is a key of the component's `props`, the key and value are both used. Otherwise it is used as a static value.
-  - As a function, it receives `props` and returns a string.
-- `isCollapsed` is `true` by default.
-  - This collapses the duration & diff logs when a component renders.
+* `getId` is a string or function that helps you uniquely identify each component being rendered in the logs.
+  * As a string, if it is a key of the component's `props`, the key and value are both used. Otherwise it is used as a static value.
+  * As a function, it receives `props` and returns a string.
+* `isCollapsed` is `true` by default.
+  * This collapses the duration & diff logs when a component renders.
 
 ### Record
 
 To generate reports, start recording data by running:
 
 ```js
-ReactPerformance.startRecording()
+ReactPerformance.startRecording();
 ```
 
 And then print out the report by running:
 
 ```js
-ReactPerformance.printRecording()
+ReactPerformance.printRecording();
 ```
 
 This prints out a report on all the components being measured.
@@ -90,14 +94,16 @@ Only "smart" components should be measured since those are typically the compone
 With the assumption that any data passed down to components is encapsulated in a top-level state, the most appropriate way to use this with Redux is to use `ReactPerformance.connect`:
 
 ```js
-class MyComponent extends React.Component {/* ... */}
+class MyComponent extends React.Component {
+  /* ... */
+}
 
 export default ReactPerformance.connect({
   mapStateToProps,
   mapDispatchToProps,
   getId: 'some_recognizable_identifier',
-  Component: MyComponent,
-})
+  Component: MyComponent
+});
 ```
 
 This is equivalent to `ReactPerformance.measure` - except it also connects the component to the Redux store.
@@ -110,9 +116,9 @@ To get measurements on the full duration across all component renders triggered 
 const enhancer = redux.compose(
   // ...All other middleware first
   // This must be the last one!
-  ReactPerformance.createNotifier(),
-)
-const store = redux.createStore(rootReducer, enhancer)
+  ReactPerformance.createNotifier()
+);
+const store = redux.createStore(rootReducer, enhancer);
 ```
 
 This will log measurements in batches of rerenders caused by updates to the store:
@@ -123,6 +129,19 @@ This will log measurements in batches of rerenders caused by updates to the stor
 
 ---
 
-© 2017 [Amsul](http://twitter.com/amsul_)
+## Contributing & Testing
+
+PRs to improve this library are always welcome, but please make sure to test your changes locally before submitting, and to be consistent with the coding style.
+
+To test your changes you have to do the following:
+
+1. run `yarn develop` in the root directory, to start a watch process that compiles `lib` to `dist`
+1. `cd` into the `examples` folder and run `yarn && yarn start` to start the `react-create-app` server
+
+Now you can test your changes at `http://localhost:3000/`
+
+---
+
+© 2018 [Kelset](http://twitter.com/kelset)
 
 Licensed under [MIT](http://amsul.ca/MIT)
