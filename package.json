@@ -1,22 +1,21 @@
 {
-  "name": "react-performance",
+  "name": "@drivetribe/react-performance",
   "version": "0.0.4",
   "description": "Helpers to debug and record component render performance",
   "repository": "https://github.com/amsul/react-performance",
   "author": "Amsul <reach@amsul.ca>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist/ && yarn build:native && yarn build:rollup && yarn build:examples",
+    "build":
+      "rm -rf dist/ && yarn build:native && yarn build:rollup && yarn build:examples",
     "build:examples": "cp -a dist/. examples/src/dist/",
-    "build:native": "cp -a lib/. dist/ && mv dist/index.js dist/react-performance.native.js",
+    "build:native":
+      "cp -a lib/. dist/ && mv dist/index.js dist/react-performance.native.js",
     "build:rollup": "rollup -c",
     "develop": "watch 'yarn build' lib/.",
     "prepublish": "yarn build"
   },
-  "files": [
-    "dist/**",
-    "lib/**"
-  ],
+  "files": ["dist/**", "lib/**"],
   "main": "dist/react-performance.umd.js",
   "module": "dist/react-performance.js",
   "jsnext:main": "dist/react-performance.js",
