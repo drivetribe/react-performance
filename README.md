@@ -4,39 +4,39 @@ Helpers to debug and record component render performance
 
 With the release of React Fiber in v16, `react-addons-perf` has officially become obsolete. This project aims to be a "close enough" alternate solution.
 
-Fork of [Amsul's](https://github.com/amsul/react-performance)
+## Usage
+
+### Screenshots
 
 #### Logs
 
-![](docs/renders.png)
+![Renders](docs/renders.png)
 
 #### Reports
 
-![](docs/report.png)
+![Report](docs/report.png)
 
 #### Timing
 
-![](docs/timing.png)
-
-<br />
+![Timing](docs/timing.png)
 
 ## Installation
 
-* [Yarn](https://yarnpkg.com): `yarn add react-performance`
-* [npm](https://www.npmjs.com): `npm install react-performance`
-
-<br />
-
-## Usage
+* [Yarn](https://yarnpkg.com): `yarn add @drivetribe/react-performance`
+* [npm](https://www.npmjs.com): `npm install @drivetribe/react-performance`
 
 ```js
-import ReactPerformance from 'react-performance';
+import ReactPerformance from '@drivetribe/react-performance';
 ```
 
 You can also choose to import selectively:
 
 ```js
-import { measure, startRecording, printRecording } from 'react-performance';
+import {
+  measure,
+  startRecording,
+  printRecording
+} from '@drivetribe/react-performance';
 ```
 
 NOTE: In a production environment, `ReactPerformance` disables itself.
@@ -53,7 +53,8 @@ class MyComponent extends React.Component {
 export default ReactPerformance.measure({
   getId: 'some_recognizable_identifier',
   Component: MyComponent,
-  isCollapsed: false
+  isCollapsed: false,
+  isMuted: false
 });
 ```
 
@@ -61,7 +62,7 @@ That's it. Now logs will print every time the component renders.
 
 If you use Redux, read the section below on how to [Use with Redux](#use-with-redux).
 
-##### Options:
+#### Options
 
 * `getId` is a string or function that helps you uniquely identify each component being rendered in the logs.
   * As a string, if it is a key of the component's `props`, the key and value are both used. Otherwise it is used as a static value.
@@ -123,11 +124,9 @@ const enhancer = redux.compose(
 const store = redux.createStore(rootReducer, enhancer);
 ```
 
-This will log measurements in batches of rerenders caused by updates to the store:
+This will log measurements in batches of re-renders caused by updates to the store:
 
-![](docs/notifying.png)
-
-<br />
+![Notifying](docs/notifying.png)
 
 ---
 
@@ -144,6 +143,8 @@ Now you can test your changes at `http://localhost:3000/`
 
 ---
 
-© 2018 [Kelset](http://twitter.com/kelset)
+© 2018 [Kelset](http://twitter.com/kelset) for [DriveTribe](https://twitter.com/DriveTribeTech).
 
-Licensed under [MIT](http://amsul.ca/MIT)
+---
+
+Licensed under [MIT](http://amsul.ca/MIT), started as a fork of [Amsul's](https://github.com/amsul/react-performance) lib.

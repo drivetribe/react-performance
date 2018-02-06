@@ -2,19 +2,19 @@
   "parser": "babel-eslint",
   "env": {
     "es6": true,
-    "node": true,
+    "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "globals": {
-    "requestAnimationFrame": true,
+    "requestAnimationFrame": true
   },
   "rules": {
     "no-console": "off",
-    "no-unused-vars": ["error", {
-      "args": "none"
-    }],
-  },
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "none"
+      }
+    ]
+  }
 }
