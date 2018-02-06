@@ -1,8 +1,6 @@
 # React Performance 🚀
 
-Helpers to debug and record component render performance
-
-With the release of React Fiber in v16, `react-addons-perf` has officially become obsolete. This project aims to be a "close enough" alternate solution.
+With the release of React Fiber in v16, `react-addons-perf` has officially become obsolete. This project aims to be a "close enough" alternate solution for React and React Native.
 
 ## Usage
 
@@ -24,6 +22,8 @@ With the release of React Fiber in v16, `react-addons-perf` has officially becom
 
 * [Yarn](https://yarnpkg.com): `yarn add @drivetribe/react-performance`
 * [npm](https://www.npmjs.com): `npm install @drivetribe/react-performance`
+
+## In code
 
 ```js
 import ReactPerformance from '@drivetribe/react-performance';
