@@ -39,7 +39,7 @@ import {
 } from '@drivetribe/react-performance';
 ```
 
-NOTE: In a production environment, `ReactPerformance` disables itself.
+NOTE: In a production environment, `ReactPerformance` disables itself. When using React Native, it will only work once the Remote JS Debug has been activated.
 
 ### Measure
 
@@ -58,7 +58,7 @@ export default ReactPerformance.measure({
 });
 ```
 
-That's it. Now logs will print every time the component renders.
+That's it.
 
 If you use Redux, read the section below on how to [Use with Redux](#use-with-redux).
 
