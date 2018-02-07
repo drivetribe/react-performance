@@ -1,6 +1,6 @@
 {
   "name": "@drivetribe/react-performance",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Helpers to debug and record component render performance",
   "repository": "https://github.com/amsul/react-performance",
   "author": "Amsul <reach@amsul.ca>",
